@@ -13,7 +13,7 @@ namespace Cartório21
             _tituloServicos = new TituloServiços();
         }
 
-        private async void button1_Click(object sender, EventArgs e)
+        private async void btnImportaXML_Click(object sender, EventArgs e)
         {
             OpenFileDialog openFileDialog = new OpenFileDialog();
 
