@@ -2,12 +2,12 @@
 
 namespace Cartório21.Database.Conexão
 {
-    public class ConexaoBase
+    public static class ConexaoBase
     {
-        readonly private string _connectionString = "Data Source=Marco\\SQLEXPRESS;Initial Catalog=Cartorio21_Database;Integrated Security=True;Encrypt=False";
-        public SqlConnection abrirConexaoBase()
+        readonly private static string _connectionString = "Data Source=Marco\\SQLEXPRESS;Initial Catalog=Cartorio21_Database;Integrated Security=True;Encrypt=False";
+        public static SqlConnection AbrirConexaoBase()
         {
-            return new SqlConnection(_connectionString);
+           return new SqlConnection(_connectionString);
         }
     }
 }
