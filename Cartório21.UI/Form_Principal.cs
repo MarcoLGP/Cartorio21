@@ -4,10 +4,10 @@ using Cartório21.Business.Serviços;
 
 namespace Cartório21
 {
-    public partial class Principal : Form
+    public partial class Form_Principal : Form
     {
         private TituloServiços _tituloServicos;
-        public Principal()
+        public Form_Principal()
         {
             InitializeComponent();
             _tituloServicos = new TituloServiços();
@@ -15,18 +15,22 @@ namespace Cartório21
 
         private async void btnImportaXML_Click(object sender, EventArgs e)
         {
-            OpenFileDialog openFileDialog = new OpenFileDialog();
+            OpenFileDialog openFileDialog = new OpenFileDialog
+            {
+                Filter = "Arquivos XML (*.xml)|*.xml"
+            };
 
-            // Define o filtro para arquivos XML
-            openFileDialog.Filter = "Arquivos XML (*.xml)|*.xml";
-
-            // Abre a janela do OpenFileDialog
             if (openFileDialog.ShowDialog() == DialogResult.OK)
             {
-                // Obtém o caminho do arquivo selecionado
                 string caminhoArquivoXML = openFileDialog.FileName;
                 await _tituloServicos.ImportaXML(caminhoArquivoXML);
             }
+        }
+
+        private void btnCriarTitulo_Click(object sender, EventArgs e)
+        {
+            Form_CriarAlterarTitulo formCriarTitulo = new Form_CriarAlterarTitulo();
+            formCriarTitulo.Show();
         }
     }
 }

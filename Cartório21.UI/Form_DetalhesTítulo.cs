@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace Cartório21
 {
-    public partial class CriarTitulo : Form
+    public partial class Form_DetalhesTítulo : Form
     {
-        public CriarTitulo()
+        public Form_DetalhesTítulo()
         {
             InitializeComponent();
         }

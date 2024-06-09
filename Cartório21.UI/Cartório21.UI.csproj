@@ -46,34 +46,31 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="CriarTitulo.cs">
+    <Compile Include="Form_CriarAlterarTitulo.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="CriarTitulo.Designer.cs">
-      <DependentUpon>CriarTitulo.cs</DependentUpon>
+    <Compile Include="Form_CriarAlterarTitulo.Designer.cs">
+      <DependentUpon>Form_CriarAlterarTitulo.cs</DependentUpon>
     </Compile>
-    <Compile Include="DetalhesTítulo.cs">
+    <Compile Include="Form_DetalhesTítulo.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="DetalhesTítulo.Designer.cs">
-      <DependentUpon>DetalhesTítulo.cs</DependentUpon>
+    <Compile Include="Form_DetalhesTítulo.Designer.cs">
+      <DependentUpon>Form_DetalhesTítulo.cs</DependentUpon>
     </Compile>
-    <Compile Include="EditarTítulo.cs">
+    <Compile Include="Form_Principal.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="EditarTítulo.Designer.cs">
-      <DependentUpon>EditarTítulo.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Principal.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Principal.Designer.cs">
-      <DependentUpon>Principal.cs</DependentUpon>
+    <Compile Include="Form_Principal.Designer.cs">
+      <DependentUpon>Form_Principal.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="Principal.resx">
-      <DependentUpon>Principal.cs</DependentUpon>
+    <EmbeddedResource Include="Form_CriarAlterarTitulo.resx">
+      <DependentUpon>Form_CriarAlterarTitulo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form_Principal.resx">
+      <DependentUpon>Form_Principal.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

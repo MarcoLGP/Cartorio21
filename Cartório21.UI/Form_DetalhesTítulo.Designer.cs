@@ -1,6 +1,6 @@
 ﻿namespace Cartório21
 {
-    partial class DetalhesTítulo
+    partial class Form_DetalhesTítulo
     {
         /// <summary>
         /// Required designer variable.
