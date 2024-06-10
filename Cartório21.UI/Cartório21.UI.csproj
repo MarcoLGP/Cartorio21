@@ -46,17 +46,17 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Form_CriarAlterarTitulo.cs">
+    <Compile Include="Form_ImportaXML.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Form_CriarAlterarTitulo.Designer.cs">
-      <DependentUpon>Form_CriarAlterarTitulo.cs</DependentUpon>
+    <Compile Include="Form_ImportaXML.Designer.cs">
+      <DependentUpon>Form_ImportaXML.cs</DependentUpon>
     </Compile>
-    <Compile Include="Form_DetalhesTítulo.cs">
+    <Compile Include="Form_Titulo.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Form_DetalhesTítulo.Designer.cs">
-      <DependentUpon>Form_DetalhesTítulo.cs</DependentUpon>
+    <Compile Include="Form_Titulo.Designer.cs">
+      <DependentUpon>Form_Titulo.cs</DependentUpon>
     </Compile>
     <Compile Include="Form_Principal.cs">
       <SubType>Form</SubType>
@@ -66,8 +66,12 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="Form_CriarAlterarTitulo.resx">
-      <DependentUpon>Form_CriarAlterarTitulo.cs</DependentUpon>
+    <Compile Include="Utils.cs" />
+    <EmbeddedResource Include="Form_ImportaXML.resx">
+      <DependentUpon>Form_ImportaXML.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form_Titulo.resx">
+      <DependentUpon>Form_Titulo.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Form_Principal.resx">
       <DependentUpon>Form_Principal.cs</DependentUpon>

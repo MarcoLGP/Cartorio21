@@ -25,14 +25,31 @@ namespace Cartório21
             if (openFileDialog.ShowDialog() == DialogResult.OK)
             {
                 string caminhoArquivoXML = openFileDialog.FileName;
-                await _tituloServicos.ImportaXML(caminhoArquivoXML);
+                var ret = await _tituloServicos.ImportaXML(caminhoArquivoXML);
+
+                if (ret.erro != string.Empty)
+                {
+                    Utils.ExibirMensagemErro(ret.erro);
+                    return;
+                }
+
+                else if (ret.TitulosJaCadastrados.Count > 0)
+                {
+                    foreach (var item in ret.TitulosJaCadastrados)
+                    {
+
+                    }
+                }
+
                 await AtualizarGridTitulos();
             }
         }
 
+
+
         private void btnCriarTitulo_Click(object sender, EventArgs e)
         {
-            Form_CriarAlterarTitulo formCriarTitulo = new Form_CriarAlterarTitulo();
+            Form_Titulo formCriarTitulo = new Form_Titulo();
             formCriarTitulo.Show();
         }
 
@@ -60,6 +77,8 @@ namespace Cartório21
         {
             await AtualizarGridTitulos();
             ConfigurarGridTitulos();
+
+            new Form_ImportaXML("O título de protocolo 9898 já existe no sistema, deseja atualizar ?").ShowDialog();
         }
 
         private void gridTitulos_SelectionChanged(object sender, EventArgs e)
@@ -107,7 +126,7 @@ namespace Cartório21
             
             Titulo tituloSelecionado = (Titulo)linhaSelecionada.DataBoundItem;
             
-            Form_CriarAlterarTitulo formAlterarTitulo = new Form_CriarAlterarTitulo(tituloSelecionado);
+            Form_Titulo formAlterarTitulo = new Form_Titulo(tituloSelecionado);
 
             if (formAlterarTitulo.ShowDialog() == DialogResult.OK)
             {

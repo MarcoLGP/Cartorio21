@@ -5,11 +5,11 @@ using System.Windows.Forms;
 
 namespace Cartório21
 {
-    public partial class Form_CriarAlterarTitulo : Form
+    public partial class Form_Titulo : Form
     {
         private Titulo _tituloAlterar;
         private TituloServiços _tituloServiços = new TituloServiços();
-        public Form_CriarAlterarTitulo(Titulo tituloAlterar = null)
+        public Form_Titulo(Titulo tituloAlterar = null)
         {
             InitializeComponent();
             _tituloAlterar = tituloAlterar;
