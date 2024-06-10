@@ -28,27 +28,27 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.txtNomeDevedor = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.txtDocumentoDevedor = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
-            this.textBox3 = new System.Windows.Forms.TextBox();
+            this.txtNomeCredor = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
-            this.textBox4 = new System.Windows.Forms.TextBox();
+            this.txtProtocolo = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
-            this.textBox5 = new System.Windows.Forms.TextBox();
+            this.txtDocumentoCredor = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
-            this.textBox6 = new System.Windows.Forms.TextBox();
+            this.txtNomeApresentante = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
-            this.textBox7 = new System.Windows.Forms.TextBox();
+            this.txtDocumentoApresentante = new System.Windows.Forms.TextBox();
             this.label9 = new System.Windows.Forms.Label();
-            this.textBox8 = new System.Windows.Forms.TextBox();
+            this.txtNumeroTitulo = new System.Windows.Forms.TextBox();
             this.label10 = new System.Windows.Forms.Label();
-            this.textBox9 = new System.Windows.Forms.TextBox();
+            this.txtValorTitulo = new System.Windows.Forms.TextBox();
             this.label11 = new System.Windows.Forms.Label();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
-            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
+            this.cbxEspecieTitulo = new System.Windows.Forms.ComboBox();
+            this.dtpDataEmissao = new System.Windows.Forms.DateTimePicker();
             this.label12 = new System.Windows.Forms.Label();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
@@ -63,12 +63,12 @@
             this.tabPage4.SuspendLayout();
             this.SuspendLayout();
             // 
-            // textBox1
+            // txtNomeDevedor
             // 
-            this.textBox1.Location = new System.Drawing.Point(104, 15);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(344, 20);
-            this.textBox1.TabIndex = 2;
+            this.txtNomeDevedor.Location = new System.Drawing.Point(104, 15);
+            this.txtNomeDevedor.Name = "txtNomeDevedor";
+            this.txtNomeDevedor.Size = new System.Drawing.Size(344, 20);
+            this.txtNomeDevedor.TabIndex = 2;
             // 
             // label2
             // 
@@ -90,12 +90,12 @@
             this.label3.TabIndex = 5;
             this.label3.Text = "Documento devedor:";
             // 
-            // textBox2
+            // txtDocumentoDevedor
             // 
-            this.textBox2.Location = new System.Drawing.Point(136, 41);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(312, 20);
-            this.textBox2.TabIndex = 4;
+            this.txtDocumentoDevedor.Location = new System.Drawing.Point(136, 41);
+            this.txtDocumentoDevedor.Name = "txtDocumentoDevedor";
+            this.txtDocumentoDevedor.Size = new System.Drawing.Size(312, 20);
+            this.txtDocumentoDevedor.TabIndex = 4;
             // 
             // label4
             // 
@@ -107,12 +107,12 @@
             this.label4.TabIndex = 7;
             this.label4.Text = "Nome credor:";
             // 
-            // textBox3
+            // txtNomeCredor
             // 
-            this.textBox3.Location = new System.Drawing.Point(96, 16);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(343, 20);
-            this.textBox3.TabIndex = 6;
+            this.txtNomeCredor.Location = new System.Drawing.Point(96, 16);
+            this.txtNomeCredor.Name = "txtNomeCredor";
+            this.txtNomeCredor.Size = new System.Drawing.Size(343, 20);
+            this.txtNomeCredor.TabIndex = 6;
             // 
             // label5
             // 
@@ -124,12 +124,12 @@
             this.label5.TabIndex = 9;
             this.label5.Text = "Protocolo:";
             // 
-            // textBox4
+            // txtProtocolo
             // 
-            this.textBox4.Location = new System.Drawing.Point(83, 10);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(391, 20);
-            this.textBox4.TabIndex = 8;
+            this.txtProtocolo.Location = new System.Drawing.Point(83, 10);
+            this.txtProtocolo.Name = "txtProtocolo";
+            this.txtProtocolo.Size = new System.Drawing.Size(91, 20);
+            this.txtProtocolo.TabIndex = 8;
             // 
             // label6
             // 
@@ -141,12 +141,12 @@
             this.label6.TabIndex = 11;
             this.label6.Text = "Documento credor:";
             // 
-            // textBox5
+            // txtDocumentoCredor
             // 
-            this.textBox5.Location = new System.Drawing.Point(128, 43);
-            this.textBox5.Name = "textBox5";
-            this.textBox5.Size = new System.Drawing.Size(311, 20);
-            this.textBox5.TabIndex = 10;
+            this.txtDocumentoCredor.Location = new System.Drawing.Point(128, 43);
+            this.txtDocumentoCredor.Name = "txtDocumentoCredor";
+            this.txtDocumentoCredor.Size = new System.Drawing.Size(311, 20);
+            this.txtDocumentoCredor.TabIndex = 10;
             // 
             // label7
             // 
@@ -158,12 +158,12 @@
             this.label7.TabIndex = 13;
             this.label7.Text = "Nome apresentante:";
             // 
-            // textBox6
+            // txtNomeApresentante
             // 
-            this.textBox6.Location = new System.Drawing.Point(133, 15);
-            this.textBox6.Name = "textBox6";
-            this.textBox6.Size = new System.Drawing.Size(312, 20);
-            this.textBox6.TabIndex = 12;
+            this.txtNomeApresentante.Location = new System.Drawing.Point(133, 15);
+            this.txtNomeApresentante.Name = "txtNomeApresentante";
+            this.txtNomeApresentante.Size = new System.Drawing.Size(312, 20);
+            this.txtNomeApresentante.TabIndex = 12;
             // 
             // label8
             // 
@@ -175,12 +175,12 @@
             this.label8.TabIndex = 15;
             this.label8.Text = "Documento apresentante:";
             // 
-            // textBox7
+            // txtDocumentoApresentante
             // 
-            this.textBox7.Location = new System.Drawing.Point(165, 43);
-            this.textBox7.Name = "textBox7";
-            this.textBox7.Size = new System.Drawing.Size(280, 20);
-            this.textBox7.TabIndex = 14;
+            this.txtDocumentoApresentante.Location = new System.Drawing.Point(165, 43);
+            this.txtDocumentoApresentante.Name = "txtDocumentoApresentante";
+            this.txtDocumentoApresentante.Size = new System.Drawing.Size(280, 20);
+            this.txtDocumentoApresentante.TabIndex = 14;
             // 
             // label9
             // 
@@ -192,12 +192,12 @@
             this.label9.TabIndex = 17;
             this.label9.Text = "Número título:";
             // 
-            // textBox8
+            // txtNumeroTitulo
             // 
-            this.textBox8.Location = new System.Drawing.Point(108, 36);
-            this.textBox8.Name = "textBox8";
-            this.textBox8.Size = new System.Drawing.Size(366, 20);
-            this.textBox8.TabIndex = 16;
+            this.txtNumeroTitulo.Location = new System.Drawing.Point(108, 36);
+            this.txtNumeroTitulo.Name = "txtNumeroTitulo";
+            this.txtNumeroTitulo.Size = new System.Drawing.Size(366, 20);
+            this.txtNumeroTitulo.TabIndex = 16;
             // 
             // label10
             // 
@@ -209,12 +209,12 @@
             this.label10.TabIndex = 19;
             this.label10.Text = "Valor título:";
             // 
-            // textBox9
+            // txtValorTitulo
             // 
-            this.textBox9.Location = new System.Drawing.Point(92, 62);
-            this.textBox9.Name = "textBox9";
-            this.textBox9.Size = new System.Drawing.Size(382, 20);
-            this.textBox9.TabIndex = 18;
+            this.txtValorTitulo.Location = new System.Drawing.Point(92, 62);
+            this.txtValorTitulo.Name = "txtValorTitulo";
+            this.txtValorTitulo.Size = new System.Drawing.Size(382, 20);
+            this.txtValorTitulo.TabIndex = 18;
             // 
             // label11
             // 
@@ -226,29 +226,29 @@
             this.label11.TabIndex = 21;
             this.label11.Text = "Espécie título:";
             // 
-            // comboBox1
+            // cbxEspecieTitulo
             // 
-            this.comboBox1.BackColor = System.Drawing.SystemColors.Control;
-            this.comboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBox1.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Items.AddRange(new object[] {
+            this.cbxEspecieTitulo.BackColor = System.Drawing.SystemColors.Control;
+            this.cbxEspecieTitulo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbxEspecieTitulo.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this.cbxEspecieTitulo.FormattingEnabled = true;
+            this.cbxEspecieTitulo.Items.AddRange(new object[] {
             "Cheque",
             "Duplicata",
             "Nota promissória",
             "Boleto"});
-            this.comboBox1.Location = new System.Drawing.Point(108, 88);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(192, 21);
-            this.comboBox1.TabIndex = 22;
+            this.cbxEspecieTitulo.Location = new System.Drawing.Point(108, 88);
+            this.cbxEspecieTitulo.Name = "cbxEspecieTitulo";
+            this.cbxEspecieTitulo.Size = new System.Drawing.Size(192, 21);
+            this.cbxEspecieTitulo.TabIndex = 22;
             // 
-            // dateTimePicker1
+            // dtpDataEmissao
             // 
-            this.dateTimePicker1.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dateTimePicker1.Location = new System.Drawing.Point(107, 116);
-            this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(97, 20);
-            this.dateTimePicker1.TabIndex = 23;
+            this.dtpDataEmissao.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dtpDataEmissao.Location = new System.Drawing.Point(107, 116);
+            this.dtpDataEmissao.Name = "dtpDataEmissao";
+            this.dtpDataEmissao.Size = new System.Drawing.Size(97, 20);
+            this.dtpDataEmissao.TabIndex = 23;
             // 
             // label12
             // 
@@ -274,15 +274,15 @@
             // 
             // tabPage1
             // 
-            this.tabPage1.Controls.Add(this.textBox4);
+            this.tabPage1.Controls.Add(this.txtProtocolo);
             this.tabPage1.Controls.Add(this.label12);
             this.tabPage1.Controls.Add(this.label5);
-            this.tabPage1.Controls.Add(this.dateTimePicker1);
-            this.tabPage1.Controls.Add(this.textBox8);
-            this.tabPage1.Controls.Add(this.comboBox1);
+            this.tabPage1.Controls.Add(this.dtpDataEmissao);
+            this.tabPage1.Controls.Add(this.txtNumeroTitulo);
+            this.tabPage1.Controls.Add(this.cbxEspecieTitulo);
             this.tabPage1.Controls.Add(this.label9);
             this.tabPage1.Controls.Add(this.label11);
-            this.tabPage1.Controls.Add(this.textBox9);
+            this.tabPage1.Controls.Add(this.txtValorTitulo);
             this.tabPage1.Controls.Add(this.label10);
             this.tabPage1.Location = new System.Drawing.Point(4, 22);
             this.tabPage1.Name = "tabPage1";
@@ -294,9 +294,9 @@
             // 
             // tabPage2
             // 
-            this.tabPage2.Controls.Add(this.textBox1);
+            this.tabPage2.Controls.Add(this.txtNomeDevedor);
             this.tabPage2.Controls.Add(this.label2);
-            this.tabPage2.Controls.Add(this.textBox2);
+            this.tabPage2.Controls.Add(this.txtDocumentoDevedor);
             this.tabPage2.Controls.Add(this.label3);
             this.tabPage2.Location = new System.Drawing.Point(4, 22);
             this.tabPage2.Name = "tabPage2";
@@ -308,9 +308,9 @@
             // 
             // tabPage3
             // 
-            this.tabPage3.Controls.Add(this.textBox3);
+            this.tabPage3.Controls.Add(this.txtNomeCredor);
             this.tabPage3.Controls.Add(this.label4);
-            this.tabPage3.Controls.Add(this.textBox5);
+            this.tabPage3.Controls.Add(this.txtDocumentoCredor);
             this.tabPage3.Controls.Add(this.label6);
             this.tabPage3.Location = new System.Drawing.Point(4, 22);
             this.tabPage3.Name = "tabPage3";
@@ -322,10 +322,10 @@
             // 
             // tabPage4
             // 
-            this.tabPage4.Controls.Add(this.textBox6);
+            this.tabPage4.Controls.Add(this.txtNomeApresentante);
             this.tabPage4.Controls.Add(this.label8);
             this.tabPage4.Controls.Add(this.label7);
-            this.tabPage4.Controls.Add(this.textBox7);
+            this.tabPage4.Controls.Add(this.txtDocumentoApresentante);
             this.tabPage4.Location = new System.Drawing.Point(4, 22);
             this.tabPage4.Name = "tabPage4";
             this.tabPage4.Padding = new System.Windows.Forms.Padding(3);
@@ -342,6 +342,7 @@
             this.btnSalvar.TabIndex = 26;
             this.btnSalvar.Text = "Criar título";
             this.btnSalvar.UseVisualStyleBackColor = true;
+            this.btnSalvar.Click += new System.EventHandler(this.btnSalvar_Click);
             // 
             // Form_CriarAlterarTitulo
             // 
@@ -370,27 +371,27 @@
         }
 
         #endregion
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox txtNomeDevedor;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox txtDocumentoDevedor;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.TextBox textBox3;
+        private System.Windows.Forms.TextBox txtNomeCredor;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.TextBox textBox4;
+        private System.Windows.Forms.TextBox txtProtocolo;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.TextBox textBox5;
+        private System.Windows.Forms.TextBox txtDocumentoCredor;
         private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.TextBox textBox6;
+        private System.Windows.Forms.TextBox txtNomeApresentante;
         private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.TextBox textBox7;
+        private System.Windows.Forms.TextBox txtDocumentoApresentante;
         private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.TextBox textBox8;
+        private System.Windows.Forms.TextBox txtNumeroTitulo;
         private System.Windows.Forms.Label label10;
-        private System.Windows.Forms.TextBox textBox9;
+        private System.Windows.Forms.TextBox txtValorTitulo;
         private System.Windows.Forms.Label label11;
-        private System.Windows.Forms.ComboBox comboBox1;
-        private System.Windows.Forms.DateTimePicker dateTimePicker1;
+        private System.Windows.Forms.ComboBox cbxEspecieTitulo;
+        private System.Windows.Forms.DateTimePicker dtpDataEmissao;
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.TabControl tabControl1;
         private System.Windows.Forms.TabPage tabPage1;

@@ -1,6 +1,7 @@
 ﻿using Cartório21.Business.Entidades;
 using Cartório21.Business.Repositórios.Abstrações;
 using Cartório21.Database.Operações;
+using System;
 using System.Collections.Generic;
 using System.Data.Common;
 using System.Data.SqlClient;
@@ -66,9 +67,9 @@ namespace Cartório21.Business.Repositórios
                 transacao);
         }
 
-        public async Task Atualizar(Titulo tituloAtualizado, int protocoloTituloAntigo, SqlConnection conexao = null, DbTransaction transacao = null)
+        public async Task Atualizar(Titulo tituloAtualizado, int protocoloTituloAlterar, SqlConnection conexao = null, DbTransaction transacao = null)
         {
-            const string query = @"
+            string query = @"
                   UPDATE Titulos
                   SET Protocolo = @Protocolo,
                       NomeDevedor = @NomeDevedor, 
@@ -81,12 +82,28 @@ namespace Cartório21.Business.Repositórios
                       ValorTitulo = @ValorTitulo,
                       DataEmissao = @DataEmissao,
                       EspecieTitulo = @EspecieTitulo,
-                      DataApresentacao = @DataApresentacao,
                       ValorCustas = @ValorCustas
-                  WHERE Protocolo = @ProtocoloTituloAntigo";
+                  WHERE Protocolo = @ProtocoloTituloAlterar";
+            
+            var parametros = new
+            {
+                tituloAtualizado.Protocolo,
+                tituloAtualizado.NomeDevedor,
+                tituloAtualizado.DocumentoDevedor,
+                tituloAtualizado.NomeApresentante,
+                tituloAtualizado.DocumentoApresentante,
+                tituloAtualizado.NomeCredor,
+                tituloAtualizado.DocumentoCredor,
+                tituloAtualizado.NumeroTitulo,
+                tituloAtualizado.ValorTitulo,
+                tituloAtualizado.DataEmissao,
+                tituloAtualizado.EspecieTitulo,
+                tituloAtualizado.ValorCustas,
+                ProtocoloTituloAlterar = protocoloTituloAlterar
+            };
 
             await _operaçõesBase.ExecutaComandoBaseSemRetorno(query, 
-                Utils.MesclarObjetos<dynamic>(tituloAtualizado, new { ProtocoloTituloAntigo = protocoloTituloAntigo }),
+                parametros,
                 conexao,
                 transacao
             );
@@ -94,7 +111,7 @@ namespace Cartório21.Business.Repositórios
 
         public async Task<IEnumerable<Titulo>> ObterTodos(SqlConnection conexao = null, DbTransaction transacao = null)
         {
-            const string query = "SELECT * FROM TITULOS";
+            const string query = "SELECT * FROM TITULOS ORDER BY PROTOCOLO DESC";
             return await _operaçõesBase.ExecutaComandoBaseComRetorno<Titulo>(query, conexao: conexao, transaction: transacao);
         }
 

@@ -10,7 +10,7 @@ namespace Cartório21.Business.Repositórios.Abstrações
     {
         Task Incluir(Titulo titulo, SqlConnection conexao = null, DbTransaction transacao = null);
         Task Excluir(int protocolo, SqlConnection conexao = null, DbTransaction transacao = null);
-        Task Atualizar(Titulo tituloAtualizado, int protocoloTituloAntigo, SqlConnection conexao = null, DbTransaction transacao = null);
+        Task Atualizar(Titulo tituloAtualizado, int protocoloTituloAlterar, SqlConnection conexao = null, DbTransaction transacao = null);
         Task<IEnumerable<Titulo>> ObterTodos(SqlConnection conexao = null, DbTransaction transacao = null);
         Task<Titulo> ObterPorProtocolo(int protocolo, SqlConnection conexao = null, DbTransaction transacao = null);
     }

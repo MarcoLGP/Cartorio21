@@ -28,45 +28,100 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.button1 = new System.Windows.Forms.Button();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            this.gridTitulos = new System.Windows.Forms.DataGridView();
+            this.Protocolo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.NomeCredor = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.NomeDevedor = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.EspecieTitulo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.DataApresentacao = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.btnCriarTitulo = new System.Windows.Forms.Button();
-            this.button4 = new System.Windows.Forms.Button();
-            this.button5 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
+            this.btnAlterarTitulo = new System.Windows.Forms.Button();
+            this.btnExcluirTitulo = new System.Windows.Forms.Button();
+            this.btnDetalheTitulo = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
             this.btnImportaXML = new System.Windows.Forms.Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridTitulos)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
-            // button1
+            // gridTitulos
             // 
-            this.button1.Location = new System.Drawing.Point(759, 222);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(125, 33);
-            this.button1.TabIndex = 4;
-            this.button1.Text = "Pesquisar título";
-            this.button1.UseVisualStyleBackColor = true;
+            this.gridTitulos.AllowUserToAddRows = false;
+            this.gridTitulos.AllowUserToDeleteRows = false;
+            this.gridTitulos.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.gridTitulos.BackgroundColor = System.Drawing.SystemColors.Control;
+            this.gridTitulos.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.gridTitulos.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.Protocolo,
+            this.NomeCredor,
+            this.NomeDevedor,
+            this.EspecieTitulo,
+            this.DataApresentacao});
+            this.gridTitulos.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
+            this.gridTitulos.GridColor = System.Drawing.SystemColors.AppWorkspace;
+            this.gridTitulos.Location = new System.Drawing.Point(1, -1);
+            this.gridTitulos.Name = "gridTitulos";
+            this.gridTitulos.ReadOnly = true;
+            this.gridTitulos.RowHeadersVisible = false;
+            this.gridTitulos.Size = new System.Drawing.Size(887, 580);
+            this.gridTitulos.TabIndex = 5;
             // 
-            // dataGridView1
+            // Protocolo
             // 
-            this.dataGridView1.AllowUserToAddRows = false;
-            this.dataGridView1.AllowUserToDeleteRows = false;
-            this.dataGridView1.BackgroundColor = System.Drawing.SystemColors.Control;
-            this.dataGridView1.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.GridColor = System.Drawing.SystemColors.AppWorkspace;
-            this.dataGridView1.Location = new System.Drawing.Point(4, 3);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.ReadOnly = true;
-            this.dataGridView1.Size = new System.Drawing.Size(740, 522);
-            this.dataGridView1.TabIndex = 5;
+            this.Protocolo.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Protocolo.DataPropertyName = "Protocolo";
+            this.Protocolo.FillWeight = 35.74225F;
+            this.Protocolo.HeaderText = "Protocolo";
+            this.Protocolo.Name = "Protocolo";
+            this.Protocolo.ReadOnly = true;
+            this.Protocolo.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
+            // 
+            // NomeCredor
+            // 
+            this.NomeCredor.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.NomeCredor.DataPropertyName = "NomeCredor";
+            this.NomeCredor.FillWeight = 109.1447F;
+            this.NomeCredor.HeaderText = "Credor";
+            this.NomeCredor.Name = "NomeCredor";
+            this.NomeCredor.ReadOnly = true;
+            // 
+            // NomeDevedor
+            // 
+            this.NomeDevedor.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.NomeDevedor.DataPropertyName = "NomeDevedor";
+            this.NomeDevedor.FillWeight = 109.1447F;
+            this.NomeDevedor.HeaderText = "Devedor";
+            this.NomeDevedor.Name = "NomeDevedor";
+            this.NomeDevedor.ReadOnly = true;
+            // 
+            // EspecieTitulo
+            // 
+            this.EspecieTitulo.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.EspecieTitulo.DataPropertyName = "EspecieTitulo";
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.EspecieTitulo.DefaultCellStyle = dataGridViewCellStyle1;
+            this.EspecieTitulo.FillWeight = 40F;
+            this.EspecieTitulo.HeaderText = "Espécie titulo";
+            this.EspecieTitulo.Name = "EspecieTitulo";
+            this.EspecieTitulo.ReadOnly = true;
+            // 
+            // DataApresentacao
+            // 
+            this.DataApresentacao.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.DataApresentacao.DataPropertyName = "DataApresentacao";
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.DataApresentacao.DefaultCellStyle = dataGridViewCellStyle2;
+            this.DataApresentacao.FillWeight = 40F;
+            this.DataApresentacao.HeaderText = "Data apresentação";
+            this.DataApresentacao.Name = "DataApresentacao";
+            this.DataApresentacao.ReadOnly = true;
             // 
             // btnCriarTitulo
             // 
-            this.btnCriarTitulo.Location = new System.Drawing.Point(759, 261);
+            this.btnCriarTitulo.Location = new System.Drawing.Point(908, 247);
             this.btnCriarTitulo.Name = "btnCriarTitulo";
             this.btnCriarTitulo.Size = new System.Drawing.Size(125, 35);
             this.btnCriarTitulo.TabIndex = 6;
@@ -74,41 +129,43 @@
             this.btnCriarTitulo.UseVisualStyleBackColor = true;
             this.btnCriarTitulo.Click += new System.EventHandler(this.btnCriarTitulo_Click);
             // 
-            // button4
+            // btnAlterarTitulo
             // 
-            this.button4.Enabled = false;
-            this.button4.Location = new System.Drawing.Point(760, 343);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(125, 35);
-            this.button4.TabIndex = 7;
-            this.button4.Text = "Alterar título";
-            this.button4.UseVisualStyleBackColor = true;
+            this.btnAlterarTitulo.Enabled = false;
+            this.btnAlterarTitulo.Location = new System.Drawing.Point(909, 329);
+            this.btnAlterarTitulo.Name = "btnAlterarTitulo";
+            this.btnAlterarTitulo.Size = new System.Drawing.Size(125, 35);
+            this.btnAlterarTitulo.TabIndex = 7;
+            this.btnAlterarTitulo.Text = "Alterar título";
+            this.btnAlterarTitulo.UseVisualStyleBackColor = true;
+            this.btnAlterarTitulo.Click += new System.EventHandler(this.btnAlterarTitulo_Click);
             // 
-            // button5
+            // btnExcluirTitulo
             // 
-            this.button5.Enabled = false;
-            this.button5.Location = new System.Drawing.Point(760, 384);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(125, 35);
-            this.button5.TabIndex = 8;
-            this.button5.Text = "Excluir título";
-            this.button5.UseVisualStyleBackColor = true;
+            this.btnExcluirTitulo.Enabled = false;
+            this.btnExcluirTitulo.Location = new System.Drawing.Point(909, 370);
+            this.btnExcluirTitulo.Name = "btnExcluirTitulo";
+            this.btnExcluirTitulo.Size = new System.Drawing.Size(125, 35);
+            this.btnExcluirTitulo.TabIndex = 8;
+            this.btnExcluirTitulo.Text = "Excluir título";
+            this.btnExcluirTitulo.UseVisualStyleBackColor = true;
+            this.btnExcluirTitulo.Click += new System.EventHandler(this.btnExcluirTitulo_Click);
             // 
-            // button2
+            // btnDetalheTitulo
             // 
-            this.button2.Enabled = false;
-            this.button2.Location = new System.Drawing.Point(759, 302);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(125, 35);
-            this.button2.TabIndex = 9;
-            this.button2.Text = "Detalhes título";
-            this.button2.UseVisualStyleBackColor = true;
+            this.btnDetalheTitulo.Enabled = false;
+            this.btnDetalheTitulo.Location = new System.Drawing.Point(908, 288);
+            this.btnDetalheTitulo.Name = "btnDetalheTitulo";
+            this.btnDetalheTitulo.Size = new System.Drawing.Size(125, 35);
+            this.btnDetalheTitulo.TabIndex = 9;
+            this.btnDetalheTitulo.Text = "Detalhes título";
+            this.btnDetalheTitulo.UseVisualStyleBackColor = true;
             // 
             // label3
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(778, 439);
+            this.label3.Location = new System.Drawing.Point(922, 431);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(93, 17);
             this.label3.TabIndex = 10;
@@ -116,7 +173,7 @@
             // 
             // btnImportaXML
             // 
-            this.btnImportaXML.Location = new System.Drawing.Point(759, 162);
+            this.btnImportaXML.Location = new System.Drawing.Point(908, 177);
             this.btnImportaXML.Name = "btnImportaXML";
             this.btnImportaXML.Size = new System.Drawing.Size(125, 35);
             this.btnImportaXML.TabIndex = 11;
@@ -127,32 +184,33 @@
             // pictureBox1
             // 
             this.pictureBox1.Image = global::Cartório21.Properties.Resources.cartório21_logo1;
-            this.pictureBox1.Location = new System.Drawing.Point(744, 3);
+            this.pictureBox1.Location = new System.Drawing.Point(894, 12);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(155, 130);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
             // 
-            // Principal
+            // Form_Principal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(901, 527);
-            this.Controls.Add(this.button1);
+            this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.ClientSize = new System.Drawing.Size(1052, 583);
             this.Controls.Add(this.btnImportaXML);
             this.Controls.Add(this.label3);
-            this.Controls.Add(this.button2);
-            this.Controls.Add(this.button5);
-            this.Controls.Add(this.button4);
+            this.Controls.Add(this.btnDetalheTitulo);
+            this.Controls.Add(this.btnExcluirTitulo);
+            this.Controls.Add(this.btnAlterarTitulo);
             this.Controls.Add(this.btnCriarTitulo);
-            this.Controls.Add(this.dataGridView1);
+            this.Controls.Add(this.gridTitulos);
             this.Controls.Add(this.pictureBox1);
             this.MaximizeBox = false;
-            this.Name = "Principal";
+            this.Name = "Form_Principal";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Títulos Cartório21";
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            this.Text = "Títulos Cartório";
+            this.Load += new System.EventHandler(this.Form_Principal_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.gridTitulos)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -162,14 +220,18 @@
         #endregion
 
         private System.Windows.Forms.PictureBox pictureBox1;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridView gridTitulos;
         private System.Windows.Forms.Button btnCriarTitulo;
-        private System.Windows.Forms.Button button4;
-        private System.Windows.Forms.Button button5;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button btnAlterarTitulo;
+        private System.Windows.Forms.Button btnExcluirTitulo;
+        private System.Windows.Forms.Button btnDetalheTitulo;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Button btnImportaXML;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Protocolo;
+        private System.Windows.Forms.DataGridViewTextBoxColumn NomeCredor;
+        private System.Windows.Forms.DataGridViewTextBoxColumn NomeDevedor;
+        private System.Windows.Forms.DataGridViewTextBoxColumn EspecieTitulo;
+        private System.Windows.Forms.DataGridViewTextBoxColumn DataApresentacao;
     }
 }
 

@@ -6,6 +6,7 @@ using Cartório21.Business.Entidades;
 using System;
 using Cartório21.Database.Operações;
 using Cartório21.Database.Conexão;
+using System.Collections.Generic;
 
 namespace Cartório21.Business.Serviços
 {
@@ -78,6 +79,25 @@ namespace Cartório21.Business.Serviços
                         transacao.Commit();
                 }
             }
+        }
+        public async Task<IEnumerable<Titulo>> ObterTodosOsTitulos()
+        {
+           return await _tituloRepositório.ObterTodos();
+        }
+
+        public async Task DeletarTitulo(int protocoloTitulo)
+        { 
+            await _tituloRepositório.Excluir(protocoloTitulo);
+        }
+
+        public async Task AtualizarTitulo(Titulo titulo, int protocoloTituloAlterar)
+        {
+            await _tituloRepositório.Atualizar(titulo, protocoloTituloAlterar);
+        }
+
+        public async Task IncluirTitulo(Titulo titulo)
+        {
+            await _tituloRepositório.Incluir(titulo);
         }
     }
 }

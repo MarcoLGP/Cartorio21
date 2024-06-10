@@ -1,16 +1,18 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Threading.Tasks;
 using System.Windows.Forms;
+using Cartório21.Business.Entidades;
 using Cartório21.Business.Serviços;
 
 namespace Cartório21
 {
     public partial class Form_Principal : Form
     {
-        private TituloServiços _tituloServicos;
+        private TituloServiços _tituloServicos = new TituloServiços();
         public Form_Principal()
         {
             InitializeComponent();
-            _tituloServicos = new TituloServiços();
         }
 
         private async void btnImportaXML_Click(object sender, EventArgs e)
@@ -24,6 +26,7 @@ namespace Cartório21
             {
                 string caminhoArquivoXML = openFileDialog.FileName;
                 await _tituloServicos.ImportaXML(caminhoArquivoXML);
+                await AtualizarGridTitulos();
             }
         }
 
@@ -31,6 +34,85 @@ namespace Cartório21
         {
             Form_CriarAlterarTitulo formCriarTitulo = new Form_CriarAlterarTitulo();
             formCriarTitulo.Show();
+        }
+
+        private async Task AtualizarGridTitulos()
+        {
+            IEnumerable<Titulo> ret = await _tituloServicos.ObterTodosOsTitulos();
+            
+            gridTitulos.AutoGenerateColumns = false;
+
+            gridTitulos.DataSource = ret;
+            
+            gridTitulos.ClearSelection();
+            
+        }
+
+        private void ConfigurarGridTitulos()
+        {
+            gridTitulos.Columns["EspecieTitulo"].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            gridTitulos.Columns["DataApresentacao"].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
+
+            gridTitulos.SelectionChanged += gridTitulos_SelectionChanged;
+        }
+
+        private async void Form_Principal_Load(object sender, EventArgs e)
+        {
+            await AtualizarGridTitulos();
+            ConfigurarGridTitulos();
+        }
+
+        private void gridTitulos_SelectionChanged(object sender, EventArgs e)
+        {
+            if (gridTitulos.SelectedCells.Count > 0)
+            {
+                btnAlterarTitulo.Enabled = true;
+                btnExcluirTitulo.Enabled = true;
+                btnDetalheTitulo.Enabled = true;
+            }
+            else
+            {
+                btnAlterarTitulo.Enabled = false;
+                btnExcluirTitulo.Enabled = false;
+                btnDetalheTitulo.Enabled = false;
+            }
+        }
+
+        private async Task ConfirmarDeletarTituloSelecionado()
+        {
+            var dialogResult = MessageBox.Show(
+                    "Deseja realmente excluir o título selecionado ?",
+                    "Atenção",
+                    MessageBoxButtons.OKCancel,
+                    MessageBoxIcon.Warning);
+
+            if (dialogResult == DialogResult.OK)
+            {
+                DataGridViewRow linhaSelecionada = gridTitulos.Rows[gridTitulos.CurrentRow.Index];
+                int protocolo = int.Parse(linhaSelecionada.Cells["Protocolo"].Value.ToString());
+
+                await _tituloServicos.DeletarTitulo(protocolo);
+                await AtualizarGridTitulos();
+            }
+        }
+
+        private async void btnExcluirTitulo_Click(object sender, EventArgs e)
+        {
+            await ConfirmarDeletarTituloSelecionado();
+        }
+
+        private async void btnAlterarTitulo_Click(object sender, EventArgs e)
+        {
+            var linhaSelecionada = gridTitulos.Rows[gridTitulos.CurrentRow.Index];
+            
+            Titulo tituloSelecionado = (Titulo)linhaSelecionada.DataBoundItem;
+            
+            Form_CriarAlterarTitulo formAlterarTitulo = new Form_CriarAlterarTitulo(tituloSelecionado);
+
+            if (formAlterarTitulo.ShowDialog() == DialogResult.OK)
+            {
+                await AtualizarGridTitulos();
+            }
         }
     }
 }

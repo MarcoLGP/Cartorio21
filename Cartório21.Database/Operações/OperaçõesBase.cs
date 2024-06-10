@@ -1,5 +1,6 @@
 ﻿using Cartório21.Database.Conexão;
 using Dapper;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
@@ -15,14 +16,11 @@ namespace Cartório21.Database.Operações
             {
                 using (conexao = ConexaoBase.AbrirConexaoBase())
                 {
-                    if (transaction == null)
-                        await conexao.OpenAsync();
-
                     await conexao.ExecuteAsync(sql, param, transaction);
                 }
             }
-
-            await conexao.ExecuteAsync(sql, param, transaction);
+            else 
+                await conexao.ExecuteAsync(sql, param, transaction);
         }
         public async Task<IEnumerable<T>> ExecutaComandoBaseComRetorno<T>(string sql, object param = null, SqlConnection conexao = null, IDbTransaction transaction = null)
         {
