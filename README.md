@@ -68,7 +68,7 @@ Requisitos
 - Siga o que considera boas práticas de programação.
 
 ## Links
-<a href="https://drive.google.com/file/d/1G1EpVN0VrtK5xslN2YObcCjXAvTvayJL/view">Instalador da aplicação</a>
+<a href="https://drive.google.com/file/d/1E21LCagGrukqhdm5tNtFAE46Q1uyEWU_/view">Instalador da aplicação</a>
 <a href="https://drive.google.com/file/d/12QbQFYb3nKtBEr0XGNRlJ8agxJrmNqsb/view">XML</a>
 
 ### O amor é paciente, o amor é bondoso. Não inveja, não se vangloria, não se orgulha. Não maltrata, não procura seus interesses, não se ira facilmente, não guarda rancor. O amor não se alegra com a injustiça, mas se alegra com a verdade. Tudo sofre, tudo crê, tudo espera, tudo suporta.
