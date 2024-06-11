@@ -30,6 +30,7 @@
         {
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form_Principal));
             this.gridTitulos = new System.Windows.Forms.DataGridView();
             this.Protocolo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.NomeCredor = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -43,6 +44,7 @@
             this.label3 = new System.Windows.Forms.Label();
             this.btnImportaXML = new System.Windows.Forms.Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.btnConfiguracoes = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.gridTitulos)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
@@ -68,6 +70,8 @@
             this.gridTitulos.RowHeadersVisible = false;
             this.gridTitulos.Size = new System.Drawing.Size(887, 580);
             this.gridTitulos.TabIndex = 5;
+            this.gridTitulos.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.gridTitulos_CellDoubleClick);
+            this.gridTitulos.KeyDown += new System.Windows.Forms.KeyEventHandler(this.gridTitulos_KeyDown);
             // 
             // Protocolo
             // 
@@ -160,12 +164,13 @@
             this.btnDetalheTitulo.TabIndex = 9;
             this.btnDetalheTitulo.Text = "Detalhes título";
             this.btnDetalheTitulo.UseVisualStyleBackColor = true;
+            this.btnDetalheTitulo.Click += new System.EventHandler(this.btnDetalheTitulo_Click);
             // 
             // label3
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(922, 431);
+            this.label3.Location = new System.Drawing.Point(925, 478);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(93, 17);
             this.label3.TabIndex = 10;
@@ -191,12 +196,23 @@
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
             // 
+            // btnConfiguracoes
+            // 
+            this.btnConfiguracoes.Location = new System.Drawing.Point(909, 434);
+            this.btnConfiguracoes.Name = "btnConfiguracoes";
+            this.btnConfiguracoes.Size = new System.Drawing.Size(125, 35);
+            this.btnConfiguracoes.TabIndex = 12;
+            this.btnConfiguracoes.Text = "Configurações";
+            this.btnConfiguracoes.UseVisualStyleBackColor = true;
+            this.btnConfiguracoes.Click += new System.EventHandler(this.btnConfiguracoes_Click);
+            // 
             // Form_Principal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.ClientSize = new System.Drawing.Size(1052, 583);
+            this.Controls.Add(this.btnConfiguracoes);
             this.Controls.Add(this.btnImportaXML);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.btnDetalheTitulo);
@@ -205,6 +221,7 @@
             this.Controls.Add(this.btnCriarTitulo);
             this.Controls.Add(this.gridTitulos);
             this.Controls.Add(this.pictureBox1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.Name = "Form_Principal";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -232,6 +249,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn NomeDevedor;
         private System.Windows.Forms.DataGridViewTextBoxColumn EspecieTitulo;
         private System.Windows.Forms.DataGridViewTextBoxColumn DataApresentacao;
+        private System.Windows.Forms.Button btnConfiguracoes;
     }
 }
 

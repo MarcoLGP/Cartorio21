@@ -8,6 +8,8 @@ using Cartório21.Database.Operações;
 using Cartório21.Database.Conexão;
 using System.Collections.Generic;
 using Cartório21.Business.DTOs;
+using Cartório21.Business.Validadores;
+using Cartório21.Business.Enums;
 
 namespace Cartório21.Business.Serviços
 {
@@ -22,9 +24,9 @@ namespace Cartório21.Business.Serviços
             _operaçõesBase = new OperaçõesBase();
         }
 
-        public async Task<ImportaXMLRetorno> ImportaXML(string caminhoArquivoXML)
+        public async Task<ImportaXMLretornoImportaXML> ImportaXML(string caminhoArquivoXML)
         {
-            ImportaXMLRetorno retorno = new ImportaXMLRetorno();
+            ImportaXMLretornoImportaXML retornoImportaXML = new ImportaXMLretornoImportaXML();
             Titulos titulosXML;
 
             try
@@ -33,8 +35,8 @@ namespace Cartório21.Business.Serviços
             }
             catch (Exception ex)
             {
-                retorno.erro = ex.Message;
-                return retorno;
+                retornoImportaXML.erro = ex.Message;
+                return retornoImportaXML;
             }
 
             if (titulosXML.Items.Any())
@@ -53,7 +55,7 @@ namespace Cartório21.Business.Serviços
 
                             var ret = await _tituloRepositório.ObterPorProtocolo(itemProtocolo, conexaoBase, transacao);
 
-                            decimal valorTitulo = decimal.Parse(itemTituloXML.ValorTitulo);
+                            decimal valorTitulo = decimal.Parse(itemTituloXML.ValorTitulo.Replace(".", ","));
 
                             Titulo novoTitulo = new Titulo
                             {
@@ -69,36 +71,59 @@ namespace Cartório21.Business.Serviços
                                 DataEmissao = Convert.ToDateTime(itemTituloXML.DataEmissao),
                                 EspecieTitulo = itemTituloXML.EspecieTitulo,
                                 DataApresentacao = DateTime.Now,
-                                ValorCustas = valorTitulo * (decimal)0.10
+                                ValorCustas = Math.Round(valorTitulo * (decimal)0.10, 2)
                             };
+
 
                             if (ret == null)
                             {
+                                var validador = new ValidadorTitulo(novoTitulo, OperacaoTitulo.Criar);
+
+                                var errosValidador = await validador.Validar();
+
+                                if (errosValidador.Count > 0)
+                                {
+                                    retornoImportaXML.erro = $"Dados do protocolo [{itemProtocolo}] inválidos:\n\n";
+                                    retornoImportaXML.erro += string.Join("\n", errosValidador.Select(s => $"[{s}]"));
+                                    break;
+                                }
+
                                 await _tituloRepositório.Incluir(novoTitulo, conexaoBase, transacao);
                             }
                             else
                             {
-                                retorno.TitulosJaCadastrados.Add(novoTitulo);
+                                var validador = new ValidadorTitulo(novoTitulo, OperacaoTitulo.Alterar);
+
+                                var errosValidador = await validador.Validar();
+
+                                if (errosValidador.Count > 0)
+                                {
+                                    retornoImportaXML.erro = $"Dados do protocolo [{itemProtocolo}] inválidos:\n\n";
+                                    retornoImportaXML.erro += string.Join("\n", errosValidador.Select(s => $"[{s}]"));
+                                    break;
+                                }
+
+                                retornoImportaXML.TitulosJaCadastrados.Add(novoTitulo);
                             }
                         }
                         catch (Exception ex)
                         {
-                            retorno.erro = ex.Message;
+                            retornoImportaXML.erro = $"Erro ao tentar inserir título de protocolo [{itemTituloXML.Protocolo}]\n[{ex.Message}]";
                             break;
                         }
                     }
 
-                    if (retorno.erro != string.Empty)
+                    if (retornoImportaXML.erro != string.Empty)
                     {
                         transacao.Rollback();
-                        retorno.TitulosJaCadastrados = null;
+                        retornoImportaXML.TitulosJaCadastrados = null;
                     }
                     else
                         transacao.Commit();
                 }
             }
 
-            return retorno;
+            return retornoImportaXML;
         }
         public async Task<IEnumerable<Titulo>> ObterTodosOsTitulos()
         {

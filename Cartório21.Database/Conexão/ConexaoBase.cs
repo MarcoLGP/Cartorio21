@@ -1,13 +1,38 @@
-﻿using System.Data.SqlClient;
+﻿using System;
+using System.Data.SqlClient;
+using System.Threading.Tasks;
 
 namespace Cartório21.Database.Conexão
 {
     public static class ConexaoBase
     {
-        readonly private static string _connectionString = "Data Source=Marco\\SQLEXPRESS;Initial Catalog=Cartorio21_Database;Integrated Security=True;Encrypt=False";
         public static SqlConnection AbrirConexaoBase()
         {
-           return new SqlConnection(_connectionString);
+           return new SqlConnection(ObterStringConexao());
+        }
+        public static string ObterStringConexao()
+        {
+            return Properties.Settings.Default.ConexaoBanco;
+        }
+        public static void SalvarStringConexao(string stringConexao)
+        {
+            Properties.Settings.Default.ConexaoBanco = stringConexao;
+            Properties.Settings.Default.Save();
+        }
+        public static async Task<bool> TestarConexaoBase(string stringConexao)
+        {
+            try
+            {
+                using (var connection = new SqlConnection(stringConexao))
+                {
+                    await connection.OpenAsync();
+                    return true;
+                }
+            }
+            catch (Exception)
+            {
+                return false;
+            }
         }
     }
 }

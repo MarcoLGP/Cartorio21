@@ -32,6 +32,9 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>cartório21.ico</ApplicationIcon>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -46,6 +49,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Form_Configuracoes.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form_Configuracoes.Designer.cs">
+      <DependentUpon>Form_Configuracoes.cs</DependentUpon>
+    </Compile>
     <Compile Include="Form_ImportaXML.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -67,6 +76,9 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Utils.cs" />
+    <EmbeddedResource Include="Form_Configuracoes.resx">
+      <DependentUpon>Form_Configuracoes.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Form_ImportaXML.resx">
       <DependentUpon>Form_ImportaXML.cs</DependentUpon>
     </EmbeddedResource>
@@ -107,6 +119,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\cartório21_logo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="cartório21.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

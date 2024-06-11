@@ -43,12 +43,21 @@
   <ItemGroup>
     <Compile Include="DTOs\ImportaXMLRetorno.cs" />
     <Compile Include="Entidades\Titulo.cs" />
+    <Compile Include="Enums\OperacaoTitulo.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <DependentUpon>Settings.settings</DependentUpon>
+    </Compile>
     <Compile Include="Repositórios\Abstrações\ITituloRepositório.cs" />
     <Compile Include="Repositórios\TituloRepositório.cs" />
     <Compile Include="Serviços\Abstrações\ITituloServiços.cs" />
+    <Compile Include="Serviços\BaseDadosServiços.cs" />
     <Compile Include="Serviços\TituloServiços.cs" />
     <Compile Include="Utils.cs" />
+    <Compile Include="Validadores\Abstrações\IValidadorTitulo.cs" />
+    <Compile Include="Validadores\ValidadorTitulo.cs" />
     <Compile Include="XML\titulos.cs">
       <DependentUpon>titulos.xsd</DependentUpon>
     </Compile>
@@ -61,6 +70,11 @@
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
+    <None Include="app.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
     <None Include="XML\titulos.xsc">
       <DependentUpon>titulos.xsd</DependentUpon>
     </None>

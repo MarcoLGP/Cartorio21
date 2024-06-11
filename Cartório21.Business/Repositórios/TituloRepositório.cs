@@ -1,7 +1,6 @@
 ﻿using Cartório21.Business.Entidades;
 using Cartório21.Business.Repositórios.Abstrações;
 using Cartório21.Database.Operações;
-using System;
 using System.Collections.Generic;
 using System.Data.Common;
 using System.Data.SqlClient;
@@ -111,7 +110,7 @@ namespace Cartório21.Business.Repositórios
 
         public async Task<IEnumerable<Titulo>> ObterTodos(SqlConnection conexao = null, DbTransaction transacao = null)
         {
-            const string query = "SELECT * FROM TITULOS ORDER BY PROTOCOLO DESC";
+            const string query = "SELECT * FROM TITULOS ORDER BY DATAINSERCAO DESC";
             return await _operaçõesBase.ExecutaComandoBaseComRetorno<Titulo>(query, conexao: conexao, transaction: transacao);
         }
 

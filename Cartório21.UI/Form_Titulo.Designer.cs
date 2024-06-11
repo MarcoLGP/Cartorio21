@@ -50,13 +50,15 @@
             this.cbxEspecieTitulo = new System.Windows.Forms.ComboBox();
             this.dtpDataEmissao = new System.Windows.Forms.DateTimePicker();
             this.label12 = new System.Windows.Forms.Label();
-            this.tabControl1 = new System.Windows.Forms.TabControl();
+            this.tabControlTitulo = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.tabPage3 = new System.Windows.Forms.TabPage();
             this.tabPage4 = new System.Windows.Forms.TabPage();
             this.btnSalvar = new System.Windows.Forms.Button();
-            this.tabControl1.SuspendLayout();
+            this.label1 = new System.Windows.Forms.Label();
+            this.txtValorCustas = new System.Windows.Forms.TextBox();
+            this.tabControlTitulo.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
             this.tabPage3.SuspendLayout();
@@ -213,8 +215,9 @@
             // 
             this.txtValorTitulo.Location = new System.Drawing.Point(92, 62);
             this.txtValorTitulo.Name = "txtValorTitulo";
-            this.txtValorTitulo.Size = new System.Drawing.Size(382, 20);
+            this.txtValorTitulo.Size = new System.Drawing.Size(175, 20);
             this.txtValorTitulo.TabIndex = 18;
+            this.txtValorTitulo.TextChanged += new System.EventHandler(this.txtValorTitulo_TextChanged);
             // 
             // label11
             // 
@@ -237,7 +240,7 @@
             "Duplicata",
             "Nota promissória",
             "Boleto"});
-            this.cbxEspecieTitulo.Location = new System.Drawing.Point(108, 88);
+            this.cbxEspecieTitulo.Location = new System.Drawing.Point(92, 88);
             this.cbxEspecieTitulo.Name = "cbxEspecieTitulo";
             this.cbxEspecieTitulo.Size = new System.Drawing.Size(192, 21);
             this.cbxEspecieTitulo.TabIndex = 22;
@@ -260,20 +263,22 @@
             this.label12.TabIndex = 24;
             this.label12.Text = "Data emissão:";
             // 
-            // tabControl1
+            // tabControlTitulo
             // 
-            this.tabControl1.Controls.Add(this.tabPage1);
-            this.tabControl1.Controls.Add(this.tabPage2);
-            this.tabControl1.Controls.Add(this.tabPage3);
-            this.tabControl1.Controls.Add(this.tabPage4);
-            this.tabControl1.Location = new System.Drawing.Point(1, 0);
-            this.tabControl1.Name = "tabControl1";
-            this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(505, 168);
-            this.tabControl1.TabIndex = 25;
+            this.tabControlTitulo.Controls.Add(this.tabPage1);
+            this.tabControlTitulo.Controls.Add(this.tabPage2);
+            this.tabControlTitulo.Controls.Add(this.tabPage3);
+            this.tabControlTitulo.Controls.Add(this.tabPage4);
+            this.tabControlTitulo.Location = new System.Drawing.Point(1, 0);
+            this.tabControlTitulo.Name = "tabControlTitulo";
+            this.tabControlTitulo.SelectedIndex = 0;
+            this.tabControlTitulo.Size = new System.Drawing.Size(505, 168);
+            this.tabControlTitulo.TabIndex = 25;
             // 
             // tabPage1
             // 
+            this.tabPage1.Controls.Add(this.txtValorCustas);
+            this.tabPage1.Controls.Add(this.label1);
             this.tabPage1.Controls.Add(this.txtProtocolo);
             this.tabPage1.Controls.Add(this.label12);
             this.tabPage1.Controls.Add(this.label5);
@@ -344,20 +349,38 @@
             this.btnSalvar.UseVisualStyleBackColor = true;
             this.btnSalvar.Click += new System.EventHandler(this.btnSalvar_Click);
             // 
-            // Form_CriarAlterarTitulo
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(273, 64);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(81, 15);
+            this.label1.TabIndex = 25;
+            this.label1.Text = "Valor custas:";
+            // 
+            // txtValorCustas
+            // 
+            this.txtValorCustas.Location = new System.Drawing.Point(360, 62);
+            this.txtValorCustas.Name = "txtValorCustas";
+            this.txtValorCustas.ReadOnly = true;
+            this.txtValorCustas.Size = new System.Drawing.Size(114, 20);
+            this.txtValorCustas.TabIndex = 26;
+            // 
+            // Form_Titulo
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(505, 227);
             this.Controls.Add(this.btnSalvar);
-            this.Controls.Add(this.tabControl1);
+            this.Controls.Add(this.tabControlTitulo);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.MaximizeBox = false;
-            this.Name = "Form_CriarAlterarTitulo";
+            this.Name = "Form_Titulo";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Criar título";
             this.Load += new System.EventHandler(this.Form_CriarAlterarTitulo_Load);
-            this.tabControl1.ResumeLayout(false);
+            this.tabControlTitulo.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
             this.tabPage1.PerformLayout();
             this.tabPage2.ResumeLayout(false);
@@ -393,11 +416,13 @@
         private System.Windows.Forms.ComboBox cbxEspecieTitulo;
         private System.Windows.Forms.DateTimePicker dtpDataEmissao;
         private System.Windows.Forms.Label label12;
-        private System.Windows.Forms.TabControl tabControl1;
+        private System.Windows.Forms.TabControl tabControlTitulo;
         private System.Windows.Forms.TabPage tabPage1;
         private System.Windows.Forms.TabPage tabPage2;
         private System.Windows.Forms.TabPage tabPage3;
         private System.Windows.Forms.TabPage tabPage4;
         private System.Windows.Forms.Button btnSalvar;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.TextBox txtValorCustas;
     }
 }

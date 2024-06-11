@@ -4,15 +4,18 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using Cartório21.Business.Entidades;
 using Cartório21.Business.Serviços;
+using Cartório21.Business.Enums;
 
 namespace Cartório21
 {
     public partial class Form_Principal : Form
     {
-        private TituloServiços _tituloServicos = new TituloServiços();
+        private TituloServiços _tituloServicos;
+
         public Form_Principal()
         {
             InitializeComponent();
+            _tituloServicos = new TituloServiços();
         }
 
         private async void btnImportaXML_Click(object sender, EventArgs e)
@@ -35,22 +38,45 @@ namespace Cartório21
 
                 else if (ret.TitulosJaCadastrados.Count > 0)
                 {
+                    bool simTodos = false;
+
                     foreach (var item in ret.TitulosJaCadastrados)
                     {
+                        if (simTodos)
+                        {
+                            await _tituloServicos.AtualizarTitulo(item, item.Protocolo);
+                        }
+                        else
+                        {
+                            DialogResult dialogResult = new Form_ImportaXML($"Já existe um título com protocolo {item.Protocolo} cadastrado, deseja atualiza-lo ?").ShowDialog();
 
+                            if (dialogResult == DialogResult.Yes)
+                            {
+                                await _tituloServicos.AtualizarTitulo(item, item.Protocolo);
+                            }
+                            else if (dialogResult == DialogResult.OK)
+                            {
+                                simTodos = true;
+                                await _tituloServicos.AtualizarTitulo(item, item.Protocolo);
+                            }
+                            else if (dialogResult == DialogResult.Ignore)
+                            {
+                                break;
+                            }
+                        }
                     }
                 }
-
+                
                 await AtualizarGridTitulos();
             }
         }
 
-
-
-        private void btnCriarTitulo_Click(object sender, EventArgs e)
+        private async void btnCriarTitulo_Click(object sender, EventArgs e)
         {
             Form_Titulo formCriarTitulo = new Form_Titulo();
-            formCriarTitulo.Show();
+
+            if (formCriarTitulo.ShowDialog() == DialogResult.OK)
+                await AtualizarGridTitulos();
         }
 
         private async Task AtualizarGridTitulos()
@@ -59,10 +85,10 @@ namespace Cartório21
             
             gridTitulos.AutoGenerateColumns = false;
 
+            gridTitulos.DataSource = null;
             gridTitulos.DataSource = ret;
             
             gridTitulos.ClearSelection();
-            
         }
 
         private void ConfigurarGridTitulos()
@@ -73,27 +99,47 @@ namespace Cartório21
             gridTitulos.SelectionChanged += gridTitulos_SelectionChanged;
         }
 
+        private async Task VerificarConexaoBanco()
+        {
+            var stringConexao = BaseDadosServiços.ObterStringConexaoBaseDados();
+
+            if (stringConexao == string.Empty)
+            {
+                if (new Form_Configuracoes().ShowDialog() != DialogResult.OK)
+                {
+                    Utils.ExibirMensagemErro("Não é possível prosseguir sem uma conexão ativa com o banco de dados, por favor tente novamente mais tarde");
+                    Close();
+                }
+            }
+            else 
+            {
+                if (!await BaseDadosServiços.TestarConexao())
+                {
+                    if(new Form_Configuracoes().ShowDialog() != DialogResult.OK)
+                {
+                        Utils.ExibirMensagemErro("Não é possível prosseguir sem uma conexão ativa com o banco de dados, por favor tente novamente mais tarde");
+                        Close();
+                    }
+                }
+            }
+        }
+
         private async void Form_Principal_Load(object sender, EventArgs e)
         {
+            await VerificarConexaoBanco();
             await AtualizarGridTitulos();
             ConfigurarGridTitulos();
-
-            new Form_ImportaXML("O título de protocolo 9898 já existe no sistema, deseja atualizar ?").ShowDialog();
         }
 
         private void gridTitulos_SelectionChanged(object sender, EventArgs e)
         {
             if (gridTitulos.SelectedCells.Count > 0)
             {
-                btnAlterarTitulo.Enabled = true;
-                btnExcluirTitulo.Enabled = true;
-                btnDetalheTitulo.Enabled = true;
+                btnAlterarTitulo.Enabled = btnExcluirTitulo.Enabled = btnDetalheTitulo.Enabled = true;
             }
             else
             {
-                btnAlterarTitulo.Enabled = false;
-                btnExcluirTitulo.Enabled = false;
-                btnDetalheTitulo.Enabled = false;
+                btnAlterarTitulo.Enabled = btnExcluirTitulo.Enabled = btnDetalheTitulo.Enabled = false;
             }
         }
 
@@ -122,16 +168,54 @@ namespace Cartório21
 
         private async void btnAlterarTitulo_Click(object sender, EventArgs e)
         {
-            var linhaSelecionada = gridTitulos.Rows[gridTitulos.CurrentRow.Index];
+            var tituloSelecionado = ObterTituloSelecionado();            
             
-            Titulo tituloSelecionado = (Titulo)linhaSelecionada.DataBoundItem;
-            
-            Form_Titulo formAlterarTitulo = new Form_Titulo(tituloSelecionado);
+            Form_Titulo formAlterarTitulo = new Form_Titulo(tituloSelecionado, OperacaoTitulo.Alterar);
 
             if (formAlterarTitulo.ShowDialog() == DialogResult.OK)
             {
                 await AtualizarGridTitulos();
             }
+        }
+
+        private Titulo ObterTituloSelecionado()
+        {
+            var linhaSelecionada = gridTitulos.Rows[gridTitulos.CurrentRow.Index];
+            Titulo tituloSelecionado = (Titulo)linhaSelecionada.DataBoundItem;
+
+            return tituloSelecionado;
+        }
+
+        private void ExibirFormDetalheTituloSelecionado()
+        {
+            var tituloSelecionado = ObterTituloSelecionado();
+            new Form_Titulo(tituloSelecionado, OperacaoTitulo.Detalhe).Show();
+        }
+
+        private void btnDetalheTitulo_Click(object sender, EventArgs e)
+        {
+            ExibirFormDetalheTituloSelecionado();
+        }
+
+        private void gridTitulos_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            ExibirFormDetalheTituloSelecionado();
+        }
+
+        private async void gridTitulos_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Delete && gridTitulos.SelectedCells.Count > 0)
+            {
+                await ConfirmarDeletarTituloSelecionado();
+            }
+        }
+
+        private async void btnConfiguracoes_Click(object sender, EventArgs e)
+        {
+            Form_Configuracoes formConfiguracoes = new Form_Configuracoes();
+
+            if (formConfiguracoes.ShowDialog() == DialogResult.OK)
+                await AtualizarGridTitulos();
         }
     }
 }
